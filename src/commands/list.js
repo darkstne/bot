@@ -5,6 +5,15 @@ module.exports = {
     name: 'list',
     description: 'List players online',
     async execute(message) {
+
+        try {
+            await fetch('http://play.totalfreedom.me:28966/list?json=true');
+        } catch {
+            const embed = new Discord.MessageEmbed()
+                .setDescription("Server is offline.");
+                
+                return message.channel.send(embed);
+        }
         let players = await fetch('http://play.totalfreedom.me:28966/list?json=true');
         players = await players.json();
 
@@ -25,7 +34,7 @@ module.exports = {
                 .setDescription("There are no players online.");
 
             return message.channel.send(embed);
-        };
+        }
 
         let embed = new Discord.MessageEmbed()
             .setTitle("Player List")
@@ -33,12 +42,13 @@ module.exports = {
 
         for (let x in onlinePlayers) {
             if (onlinePlayers[x].length !== 0) {
+                let rank = x.charAt(0).toUpperCase() + x.slice(1)
                 embed.addFields({
-                    name: `${x.charAt(0).toUpperCase() + x.slice(1)} (${onlinePlayers[x].length})`,
+                    name: `${rank.match(/[A-Z][a-z]+|[0-9]+/g).join(' ')} (${onlinePlayers[x].length})`,
                     value: onlinePlayers[x].join(', '),
                 });
             }
-        };
+        }
         return message.channel.send(embed);
     }
-};
+}

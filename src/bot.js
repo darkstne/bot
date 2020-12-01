@@ -20,16 +20,26 @@ client.once('ready', () => {
     });
 });
 
-let prefix;
+let prefix = config.prefix;
 
 client.on('message', async message => {
-    let prefix = config.prefix;
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
-    const command = client.commands.get(commandName);
+    const command = client.commands.get(commandName) ||
+        client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
     if (!command) return;
+    if (command.args && !args.length) {
+        let reply = `You didn't provide any arguments.`;
+        let usage = `Usage: \`${prefix}${command.name} ${command.usage}\``
+
+        const embed = new Discord.MessageEmbed()
+            .setColor(config.embedColorError)
+            .setDescription(`${reply}\n\n${usage}`)
+
+        return message.channel.send(embed);
+    }
 
     try {
         command.execute(message, args);
