@@ -23,7 +23,7 @@ module.exports = {
             developers: players.developers,
             seniorAdmins: players.senioradmins,
             admins: players.admins,
-            masterbuilders: players.masterbuilders,
+            masterBuilders: players.masterbuilders,
             operators: players.operators,
             imposters: players.imposters,
         };
