@@ -11,7 +11,7 @@ module.exports = {
                 value: "play.totalfreedom.me",
             }, {
                 name: "SMP",
-                value: "beta.smp.play.totalfreedom.me"
+                value: "smp.totalfreedom.me"
             });
         return message.channel.send(embed);
     }
