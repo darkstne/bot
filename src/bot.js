@@ -1,6 +1,5 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const util = require('minecraft-server-util');
 const config = require('../config.json');
 const client = new Discord.Client();
 
