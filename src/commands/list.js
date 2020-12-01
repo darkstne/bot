@@ -17,14 +17,15 @@ module.exports = {
             masterbuilders: players.masterbuilders,
             operators: players.operators,
             imposters: players.imposters,
-        }
+        };
+
         if (players.online === 0) {
             let embed = new Discord.MessageEmbed()
                 .setTitle("Player List")
                 .setDescription("There are no players online.");
 
             return message.channel.send(embed);
-        }
+        };
 
         let embed = new Discord.MessageEmbed()
             .setTitle("Player List")
@@ -37,7 +38,7 @@ module.exports = {
                     value: onlinePlayers[x].join(', '),
                 });
             }
-        }
+        };
         return message.channel.send(embed);
     }
-}
+};
