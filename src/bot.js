@@ -15,8 +15,8 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log("Bot Online!");
-    client.user.setActivity(`you.`, {
-        type: "WATCHING"
+    client.user.setActivity(`play.totalfreedom.me`, {
+        type: "PLAYING"
     });
 });
 
