@@ -7,7 +7,6 @@ module.exports = {
     aliases: ['commands', '?'],
     usage: '[command name]',
     execute(message, args) {
-        const data = [];
         const {
             commands
         } = message.client;
@@ -21,6 +20,7 @@ module.exports = {
             const hide = commands.map(command => command.hide);
             const staff = commands.map(command => command.staff);
 
+            const data = [];
             for (var i = 0; i < allCommands.length; i++) {
                 if (hide[i] || staff[i]) continue;
                 data.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
@@ -71,17 +71,17 @@ module.exports = {
             .setDescription(command.description);
 
         if (command.aliases) {
-                embed.addFields({
-                    name: 'Alias(es)',
-                    value: command.aliases.join(', '),
-                });
+            embed.addFields({
+                name: 'Alias(es)',
+                value: command.aliases.join(', '),
+            });
         }
 
         if (command.usage) {
             embed.addFields({
-                    name: 'Usage',
-                    value: `${prefix}${command.name} ${command.usage}`
-                });
+                name: 'Usage',
+                value: `${prefix}${command.name} ${command.usage}`
+            });
         }
 
         return message.channel.send(embed);
