@@ -20,7 +20,7 @@ module.exports = {
             const hide = commands.map(command => command.hide);
             const staff = commands.map(command => command.staff);
 
-            const data = [];
+            let data = [];
             for (var i = 0; i < allCommands.length; i++) {
                 if (hide[i] || staff[i]) continue;
                 data.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
@@ -44,7 +44,7 @@ module.exports = {
                     value: `\`${prefix}\``
                 }, {
                     name: "Commands",
-                    value: `${data.join('\n')}`
+                    value: data,
                 }, {
                     name: "Staff Commands",
                     value: staffCommands,
