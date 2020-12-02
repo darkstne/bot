@@ -7,11 +7,11 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setTitle("Server IPs")
             .addFields({
-                name: "Free-OP",
-                value: "play.totalfreedom.me",
-            }, {
                 name: "SMP",
-                value: "smp.totalfreedom.me"
+                value: "smp.totalfreedom.me",
+            }, {
+                name: "Free-OP",
+                value: "play.totalfreedom.me"
             });
         return message.channel.send(embed);
     }
