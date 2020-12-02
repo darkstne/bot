@@ -15,7 +15,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log("Bot Online!");
-    client.user.setActivity(`play.totalfreedom.me`, {
+    client.user.setActivity(`smp.totalfreedom.me`, {
         type: "PLAYING"
     });
 });
