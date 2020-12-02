@@ -32,7 +32,7 @@ module.exports = {
                     staffCommands.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
                 }
             }
-            const notes = [`You can do \`${prefix}help [command name]\` to get more information on a command.`];
+            const notes = [`- You can do \`${prefix}help [command name]\` to get more information on a command.`, "- If you notice any issues or would like something added, please visit the [GitHub](https://github.com/XenVoltz/TFSMPBot)."];
 
             for (var i = 0; i < notes.length; i++) {
                 notes.join('\n')
