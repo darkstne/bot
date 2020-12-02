@@ -9,6 +9,6 @@ For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**.
 ### TotalFreedom
 [Website](https://totalfreedom.me/) | [Forum](https://forum.totalfreedom.me/) | [GitHub](https://github.com/AtlasMediaGroup/TotalFreedomMod) | [YouTube](https://www.youtube.com/channel/UCmfrM8awKM0SEl2v5XlTBhA)
 
-Come Join The Fun!
+Come Join The Fun! <br>
 **Free OP Server**: play.totalfreedom.me <br>
 **SMP Server**: smp.totalfreedom.me
