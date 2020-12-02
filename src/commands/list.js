@@ -1,46 +1,51 @@
-const Discord = require('discord.js');
-const fetch = require('node-fetch');
-const util = require('minecraft-server-util');
+const Discord = require('discord.js')
+const fetch = require('node-fetch')
 
 module.exports = {
     name: 'list',
     description: 'List players online',
     async execute(message) {
-        util.queryFull('xensmp.net')
-        .then((response) => {
+        let embed = new Discord.MessageEmbed()
+            .setTitle("SMP Player List")
+        try {
+            await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
+        } catch {
+                embed.setDescription("Server is offline.");
+            return message.channel.send(embed);
+        }
 
-            if (response.players.length === 0) {
-                const embed = new Discord.MessageEmbed()
-                    .setColor(config.embedColorMain)
-                    .setTitle("Player List")
-                    .setDescription("There are currently no players online.")
-                    .setTimestamp()
-                    .setFooter(config.botName);
+        let players = await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
+        players = await players.json();
 
-                return message.channel.send(embed)
+        let onlinePlayers = {
+            owners: players.owner,
+            administrators: players.admin,
+            moderators: players.mod,
+            members: players.default,
+        };
+
+        if (players.online === 0) {
+
+            embed.setDescription("There are no players online.");
+            return message.channel.send(embed);
+
+        }
+
+        embed.setDescription(`There are ${players.online} / ${players.max} players online.`);
+
+        for (let x in onlinePlayers) {
+
+            if (onlinePlayers[x].length !== 0) {
+                let rank = x.charAt(0).toUpperCase() + x.slice(1)
+                embed.addFields({
+                    name: `${rank.match(/[A-Z][a-z]+|[0-9]+/g).join(' ')} (${onlinePlayers[x].length})`,
+                    value: onlinePlayers[x].join(', '),
+                });
+
             }
 
-            const players = response.players.join(', ');
-            const embed = new Discord.MessageEmbed()
-                .setColor(config.embedColorMain)
-                .setTitle("Player List")
-                .setDescription(`There are ${response.onlinePlayers} / ${response.maxPlayers} players online.`)
-                .addFields({
-                    name: 'Online Players',
-                    value: `${players}`
-                })
-                .setTimestamp()
-                .setFooter(config.botName);
-            return message.channel.send(embed);
-        })
-        .catch((error) => {
-            const embed = new Discord.MessageEmbed()
-                .setColor(config.embedColorError)
-                .setTitle("Player List")
-                .setDescription("Server is **offline**.")
-                .setTimestamp()
-                .setFooter(config.botName);
-            message.channel.send(embed);
-        });
+        }
+
+        return message.channel.send(embed);
     }
 }
