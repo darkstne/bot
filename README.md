@@ -4,7 +4,7 @@ This bot is customly coded for the [TotalFreedom](https://totalfreedom.me/) SMP 
 Created and maintained by [XenVoltz](https://github.com/XenVoltz).
 
 ### Issues and Feature Requests
-For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**. If it is a minor issue (i.e. grammar) or feature request (i.e. a new command), please open an [issue](https://github.com/XenVoltz/TFSMPBot/issues/new) or create a [pull request](https://github.com/XenVoltz/TFSMPBot/compare).
+For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**. If it is a minor issue (i.e. grammar error) or feature request (i.e. new command), please open an [issue](https://github.com/XenVoltz/TFSMPBot/issues/new) or create a [pull request](https://github.com/XenVoltz/TFSMPBot/compare).
 
 ### TotalFreedom
 [Website](https://totalfreedom.me/) | [Forum](https://forum.totalfreedom.me/) | [GitHub](https://github.com/AtlasMediaGroup/TotalFreedomMod) | [YouTube](https://www.youtube.com/channel/UCmfrM8awKM0SEl2v5XlTBhA)
