@@ -1,5 +1,5 @@
-# TFBotJS
-> TotalFreedom Bot coded with Discord.JS.
+# TFSMPBot
+> TotalFreedom SMP Bot coded with Discord.JS.
 
 > Currently still under development.
 
