@@ -5,12 +5,11 @@ module.exports = {
     description: 'Gives server IP',
     execute(message) {
         const embed = new Discord.MessageEmbed()
-            .setTitle("Server IPs")
             .addFields({
-                name: "SMP",
+                name: "SMP Server",
                 value: "smp.totalfreedom.me",
             }, {
-                name: "Free-OP",
+                name: "Free-OP Server",
                 value: "play.totalfreedom.me"
             });
         return message.channel.send(embed);

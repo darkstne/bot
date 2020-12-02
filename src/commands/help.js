@@ -45,16 +45,23 @@ module.exports = {
                 }, {
                     name: "Commands",
                     value: data,
-                }, {
-                    name: "Staff Commands",
-                    value: staffCommands,
-                }, {
-                    name: "Notes",
-                    value: notes,
                 });
 
-            return message.channel.send(embed);
+            if (staffCommands.length > 0) {
+                embed.addFields({
+                    name: "Staff Commands",
+                    value: staffCommands,
+                });
+            }
 
+            if (notes.length > 0) {
+                embed.addFields({
+                    name: "Notes",
+                    value: notes,
+
+                })
+            }
+            return message.channel.send(embed);
         }
 
         const name = args[0].toLowerCase();
@@ -83,7 +90,6 @@ module.exports = {
                 value: `${prefix}${command.name} ${command.usage}`
             });
         }
-
         return message.channel.send(embed);
     }
 }
