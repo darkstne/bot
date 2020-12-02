@@ -46,6 +46,19 @@ client.on('message', async message => {
     } catch (error) {
 
         console.error(error);
+        const embed = new Discord.MessageEmbed()
+        .setColor('#ff6961')
+        .setTitle('ERROR')
+        .setDescription("There was an error executing that command!")
+        .addFields({
+            name: 'Error',
+            value: `\`\`\`${error}\`\`\``,
+        }, {
+            name: `Command`,
+            value: `\`${message}\``,
+        })
+        .setTimestamp()
+    return message.channel.send(embed);
 
     }
 });
