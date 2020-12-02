@@ -6,26 +6,22 @@ module.exports = {
     description: 'List players online',
     async execute(message) {
         let embed = new Discord.MessageEmbed()
-            .setTitle("Player List")
+            .setTitle("SMP Player List")
         try {
-            await fetch('http://play.totalfreedom.me:28966/list?json=true');
+            await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
         } catch {
                 embed.setDescription("Server is offline.");
             return message.channel.send(embed);
         }
 
-        let players = await fetch('http://play.totalfreedom.me:28966/list?json=true');
+        let players = await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
         players = await players.json();
 
         let onlinePlayers = {
-            owners: players.owners,
-            executives: players.executives,
-            developers: players.developers,
-            seniorAdmins: players.senioradmins,
-            admins: players.admins,
-            masterBuilders: players.masterbuilders,
-            operators: players.operators,
-            imposters: players.imposters,
+            owners: players.owner,
+            administrators: players.admin,
+            moderators: players.mod,
+            members: players.default,
         };
 
         if (players.online === 0) {
