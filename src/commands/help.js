@@ -38,7 +38,7 @@ module.exports = {
                 notes.join('\n')
             }
             const embed = new Discord.MessageEmbed()
-                .setTitle('SMP Bot Help Menu')
+                .setTitle('Hyfae Bot Help Menu')
                 .addFields({
                     name: "Prefix",
                     value: `\`${prefix}\``
