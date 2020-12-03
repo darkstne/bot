@@ -1,5 +1,5 @@
 {
-  "name": "tfbot",
+  "name": "hyfaebot",
   "version": "1.0.0",
   "main": "./src/bot.js",
   "scripts": {

@@ -6,11 +6,8 @@ module.exports = {
     execute(message) {
         const embed = new Discord.MessageEmbed()
             .addFields({
-                name: "SMP Server",
-                value: "smp.totalfreedom.me",
-            }, {
-                name: "Free-OP Server",
-                value: "play.totalfreedom.me"
+                name: "Hyfae Server IP",
+                value: "hyfae.org",
             });
         return message.channel.send(embed);
     }
