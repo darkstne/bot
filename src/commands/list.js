@@ -49,3 +49,11 @@ module.exports = {
         return message.channel.send(embed);
     }
 }
+
+/*
+
+bungee 25565
+lobby 25567
+creative 25566
+survival 25568
+*/

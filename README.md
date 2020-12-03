@@ -4,7 +4,7 @@ This bot is customly coded for the [Hyfae](http://hyfae.org/) Discord server.<br
 Created and maintained by [XenVoltz](https://github.com/XenVoltz).
 
 ### Issues and Feature Requests
-For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**. If it is a minor issue (i.e. grammar error) or feature request (i.e. new command), please open an [issue](https://github.com/XenVoltz/HyfaeBot/issues/new) or create a [pull request](https://github.com/XenVoltz/HyfaeBot/compare).
+For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**. If it is a minor issue (i.e. grammar error) or feature request (i.e. new command), please open an [issue](https://github.com/hyfae/HyfaeBot/issues/new) or create a [pull request](https://github.com/hyfae/HyfaeBot/compare).
 
 ### Hyfae
 [Website](https://totalfreedom.me/) | [GitHub](http://github.com/hyfae)
