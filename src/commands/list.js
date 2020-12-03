@@ -10,6 +10,7 @@ module.exports = {
             .setColor('#00385C')
             .setTitle("Hyfae Player List")
 
+        let players;
         // Bungee Query
         await util.queryFull('hyfae.org', {
                 port: 25565
@@ -17,27 +18,25 @@ module.exports = {
             .then((res) => {
                 if (res.onlinePlayers === 0) {
                     embed.setDescription("There are no players online.");
+                    players = 0;
                     return message.channel.send(embed);
                 }
-                embed.setDescription(`There are ${res.onlinePlayers} / ${res.maxPlayers} players online.`);
+                embed.setDescription(`There is ${res.onlinePlayers} / ${res.maxPlayers} players online.`);
             })
             .catch(() => {
                 embed.setDescription("There was an error loading player count.")
             });
+
+        if (players === 0) return;
 
         // Lobby Query
         await util.queryFull('hyfae.org', {
                 port: 25567
             })
             .then((res) => {
-                if (res.onlinePlayers === 0) {
-                    return embed.addFields({
-                        name: "Lobby",
-                        value: `No one is online.`
-                    });
-                }
+                if (res.onlinePlayers === 0) return;
                 embed.addFields({
-                    name: "Lobby",
+                    name: `Lobby (${res.players.length})`,
                     value: `\`${res.players.join(', ')}\``
                 });
             })
@@ -53,14 +52,9 @@ module.exports = {
                 port: 25568
             })
             .then((res) => {
-                if (res.onlinePlayers === 0) {
-                    return embed.addFields({
-                        name: "Survival Server",
-                        value: `No one is online.`
-                    });
-                }
+                if (res.onlinePlayers === 0) return;
                 embed.addFields({
-                    name: "Survival Server",
+                    name: `Survival Server (${res.players.length})`,
                     value: `\`${res.players.join(', ')}\``
                 });
             })
@@ -76,14 +70,9 @@ module.exports = {
                 port: 25566
             })
             .then((res) => {
-                if (res.onlinePlayers === 0) {
-                    return embed.addFields({
-                        name: "Creative Server",
-                        value: `No one is online.`
-                    });
-                }
+                if (res.onlinePlayers === 0) return;
                 embed.addFields({
-                    name: "Creative Server",
+                    name: `Creative Server (${res.players.length})`,
                     value: `\`${res.players.join(', ')}\``
                 });
             })
