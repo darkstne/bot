@@ -38,6 +38,7 @@ module.exports = {
                 notes.join('\n')
             }
             const embed = new Discord.MessageEmbed()
+                .setColor('#00385C')
                 .setTitle('Hyfae Bot Help Menu')
                 .addFields({
                     name: "Prefix",
