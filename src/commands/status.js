@@ -8,27 +8,58 @@ module.exports = {
     aliases: ['state'],
     async execute(message) {
         const embed = new Discord.MessageEmbed()
-        util.status('hyfae.org')
+        embed.setColor('#00385C')
+
+        // Lobby Status
+        await util.status('hyfae.org', {
+                port: 25567
+            })
             .then(() => {
-                embed.setColor('#3FDB80')
-                embed.setDescription("Hyfae is **online**.");
-                return message.channel.send(embed)
+                embed.addFields({
+                    name: "Lobby",
+                    value: "Online"
+                });
             })
             .catch(() => {
-                embed.setColor('#ff6961');
-                embed.setDescription("Hyfae is **offline**.");
-                return message.channel.send(embed);
+                embed.addFields({
+                    name: "Lobby",
+                    value: "Offline"
+                });
             });
-        // const embed = new Discord.MessageEmbed()
-        // try {
-        //     await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
-        // } catch {
-        //     embed.setColor('#ff6961');
-        //     embed.setDescription("The SMP server is **offline**.");
-        //     return message.channel.send(embed);
-        // }
-        // embed.setColor('#3FDB80')
-        // embed.setDescription("The SMP server is **online**.");
-        // return message.channel.send(embed);
+
+        // Survival Status
+        await util.status('hyfae.org', {
+                port: 25568
+            })
+            .then(() => {
+                embed.addFields({
+                    name: "Survival Server",
+                    value: "Online"
+                });
+            })
+            .catch(() => {
+                embed.addFields({
+                    name: "Survival Server",
+                    value: "Offline"
+                });
+            });
+
+        // Creative Status
+        await util.status('hyfae.org', {
+                port: 25566
+            })
+            .then(() => {
+                embed.addFields({
+                    name: "Creative Server",
+                    value: "Online"
+                });
+            })
+            .catch(() => {
+                embed.addFields({
+                    name: "Creative Server",
+                    value: "Offline"
+                });
+            });
+        return message.channel.send(embed)
     }
 }

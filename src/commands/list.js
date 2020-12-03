@@ -10,70 +10,89 @@ module.exports = {
             .setColor('#00385C')
             .setTitle("Hyfae Player List")
 
-        util.queryFull('hyfae.org', {port: 25565 })
+        // Bungee Query
+        await util.queryFull('hyfae.org', {
+                port: 25565
+            })
             .then((res) => {
                 if (res.onlinePlayers === 0) {
                     embed.setDescription("There are no players online.");
                     return message.channel.send(embed);
                 }
                 embed.setDescription(`There are ${res.onlinePlayers} / ${res.maxPlayers} players online.`);
-                embed.addFields({
-                    name: "Online Players",
-                    value: `\`${res.players.join(', ')}\``
-                });
-                return message.channel.send(embed)
             })
             .catch(() => {
-                embed.setDescription("The server is currently **offline**.")
+                embed.setDescription("There was an error loading player count.")
             });
 
-        // util.queryFull('hyfae.org', { port: 25566 }) // These are the default options
-        // .then((res) => {
-        //     console.log(res);
-        // })
-        // .catch((error) => {
-        //     throw error;
-        // });
+        // Lobby Query
+        await util.queryFull('hyfae.org', {
+                port: 25567
+            })
+            .then((res) => {
+                if (res.onlinePlayers === 0) {
+                    return embed.addFields({
+                        name: "Lobby",
+                        value: `No one is online.`
+                    });
+                }
+                embed.addFields({
+                    name: "Lobby",
+                    value: `\`${res.players.join(', ')}\``
+                });
+            })
+            .catch(() => {
+                embed.addFields({
+                    name: "Lobby",
+                    value: "There was an error loading players."
+                });
+            });
 
-        // try {
-        //     await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
-        // } catch {
-        //         embed.setDescription("Server is offline.");
-        //     return message.channel.send(embed);
-        // }
+        // Survival Query    
+        await util.queryFull('hyfae.org', {
+                port: 25568
+            })
+            .then((res) => {
+                if (res.onlinePlayers === 0) {
+                    return embed.addFields({
+                        name: "Survival Server",
+                        value: `No one is online.`
+                    });
+                }
+                embed.addFields({
+                    name: "Survival Server",
+                    value: `\`${res.players.join(', ')}\``
+                });
+            })
+            .catch(() => {
+                embed.addFields({
+                    name: "Survival Server",
+                    value: "There was an error loading players."
+                });
+            });
 
-        // let players = await fetch('http://beta.smp.play.totalfreedom.me:4567/list');
-        // players = await players.json();
-
-        // let onlinePlayers = {
-        //     owners: players.owner,
-        //     administrators: players.admin,
-        //     moderators: players.mod,
-        //     members: players.default,
-        // };
-
-        // if (players.online === 0) {
-
-        //     embed.setDescription("There are no players online.");
-        //     return message.channel.send(embed);
-
-        // }
-
-        // embed.setDescription(`There are ${players.online} / ${players.max} players online.`);
-
-        // for (let x in onlinePlayers) {
-
-        //     if (onlinePlayers[x].length !== 0) {
-        //         let rank = x.charAt(0).toUpperCase() + x.slice(1)
-        //         embed.addFields({
-        //             name: `${rank.match(/[A-Z][a-z]+|[0-9]+/g).join(' ')} (${onlinePlayers[x].length})`,
-        //             value: onlinePlayers[x].join(', '),
-        //         });
-
-        //     }
-
-        // }
-
-        // return message.channel.send(embed);
+        // Creative Query    
+        await util.queryFull('hyfae.org', {
+                port: 25566
+            })
+            .then((res) => {
+                if (res.onlinePlayers === 0) {
+                    return embed.addFields({
+                        name: "Creative Server",
+                        value: `No one is online.`
+                    });
+                }
+                embed.addFields({
+                    name: "Creative Server",
+                    value: `\`${res.players.join(', ')}\``
+                });
+            })
+            .catch(() => {
+                embed.addFields({
+                    name: "Creative Server",
+                    value: "There was an error loading players."
+                });
+            });
+        return message.channel.send(embed)
     }
 }
