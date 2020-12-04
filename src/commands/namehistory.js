@@ -4,7 +4,7 @@ const config = require('./../../config.json');
 
 module.exports = {
     name: 'namehistory',
-    description: 'Give a name history on a player.',
+    description: 'Give a name history on a player',
     args: true,
     aliases: ['nh'],
     usage: '<ign>',
