@@ -5,9 +5,9 @@ module.exports = {
     description: 'Gives server IP',
     execute(message) {
         const embed = new Discord.MessageEmbed()
-        .setColor('#00385C')
-        .setTitle("Server IP")
-        .setDescription("hyfae.org")
+            .setColor('#00385C')
+            .setTitle("Server IP")
+            .setDescription("hyfae.org")
         return message.channel.send(embed);
     }
 }

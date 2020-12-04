@@ -8,7 +8,7 @@ module.exports = {
     aliases: ['state'],
     async execute(message) {
         const embed = new Discord.MessageEmbed()
-        embed.setColor('#00385C')
+            .setColor('#00385C')
 
         // Lobby Status
         await util.status('hyfae.org', {
