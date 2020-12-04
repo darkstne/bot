@@ -19,10 +19,11 @@ module.exports = {
             const allDescriptions = commands.map(command => command.description);
             const hide = commands.map(command => command.hide);
             const staff = commands.map(command => command.staff);
+            const voice = commands.map(command => command.voice);
 
             let data = [];
             for (var i = 0; i < allCommands.length; i++) {
-                if (hide[i] || staff[i]) continue;
+                if (hide[i] || staff[i] || voice[i]) continue;
                 data.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
             }
 
@@ -30,6 +31,13 @@ module.exports = {
             for (var i = 0; i < staff.length; i++) {
                 if (staff[i]) {
                     staffCommands.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
+                }
+            }
+
+            let voiceCommands = [];
+            for (var i = 0; i < voice.length; i++) {
+                if (voice[i]) {
+                    voiceCommands.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
                 }
             }
             const notes = [`- You can do \`${prefix}help [command name]\` to get more information on a command.`, "- If you notice any issues or would like something added, please visit the [GitHub](https://github.com/hyfae/hyfaebot)."];
@@ -52,6 +60,13 @@ module.exports = {
                 embed.addFields({
                     name: "Staff Commands",
                     value: staffCommands,
+                });
+            }
+
+            if (voiceCommands.length > 0) {
+                embed.addFields({
+                    name: "Voice Commands",
+                    value: voiceCommands,
                 });
             }
 

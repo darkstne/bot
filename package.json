@@ -8,10 +8,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
     "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.2.7",
     "minecraft-server-util": "^3.1.0",
     "mojang-api": "0.0.2",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "youtube-sr": "^2.0.4",
+    "ytdl-core": "^4.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
