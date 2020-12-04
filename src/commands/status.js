@@ -4,7 +4,7 @@ const util = require('minecraft-server-util')
 
 module.exports = {
     name: 'status',
-    description: 'Get the status of the server.',
+    description: 'Get the status of the server',
     aliases: ['state'],
     async execute(message) {
         const embed = new Discord.MessageEmbed()
