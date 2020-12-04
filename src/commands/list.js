@@ -13,7 +13,7 @@ module.exports = {
         let players;
         // Bungee Query
         await util.queryFull('hyfae.org', {
-                port: 25565
+                port: 25565,
             })
             .then((res) => {
                 if (res.onlinePlayers === 0) {
@@ -31,7 +31,7 @@ module.exports = {
 
         // Lobby Query
         await util.queryFull('hyfae.org', {
-                port: 25567
+                port: 25567,
             })
             .then((res) => {
                 if (res.onlinePlayers === 0) return;
@@ -49,7 +49,7 @@ module.exports = {
 
         // Survival Query    
         await util.queryFull('hyfae.org', {
-                port: 25568
+                port: 25568,
             })
             .then((res) => {
                 if (res.onlinePlayers === 0) return;
@@ -67,7 +67,7 @@ module.exports = {
 
         // Creative Query    
         await util.queryFull('hyfae.org', {
-                port: 25566
+                port: 25566,
             })
             .then((res) => {
                 if (res.onlinePlayers === 0) return;
