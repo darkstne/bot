@@ -15,73 +15,74 @@ module.exports = {
         await util.queryFull('hyfae.org', {
                 port: 25565,
             })
-            .then((res) => {
-                if (res.onlinePlayers === 0) {
-                    embed.setDescription("There are no players online.");
-                    players = 0;
-                    return message.channel.send(embed);
+            .then(async (res) => {
+
+                let max = res.maxPlayers;
+
+                // Lobby Query
+                await util.queryFull('hyfae.org', {
+                        port: 25567,
+                    })
+                    .then((res) => {
+                        if (res.onlinePlayers === 0) return players = res.onlinePlayers;
+                        players = res.onlinePlayers;
+                        embed.addFields({
+                            name: `Lobby (${res.players.length})`,
+                            value: `\`${res.players.join(', ')}\``
+                        });
+                    })
+                    .catch(() => {
+                        embed.addFields({
+                            name: "Lobby",
+                            value: "Error loading players"
+                        });
+                    });
+
+                // Survival Query    
+                await util.queryFull('hyfae.org', {
+                        port: 25568,
+                    })
+                    .then((res) => {
+                        if (res.onlinePlayers === 0) return players = res.onlinePlayers;
+                        players = res.onlinePlayers;
+                        embed.addFields({
+                            name: `Survival Server (${res.players.length})`,
+                            value: `\`${res.players.join(', ')}\``
+                        });
+                    })
+                    .catch(() => {
+                        embed.addFields({
+                            name: "Survival Server",
+                            value: "Error loading players"
+                        });
+                    });
+
+                // Creative Query    
+                await util.queryFull('hyfae.org', {
+                        port: 25566,
+                    })
+                    .then((res) => {
+                        if (res.onlinePlayers === 0) return players = res.onlinePlayers;
+                        players = res.onlinePlayers;
+                        embed.addFields({
+                            name: `Creative Server (${res.players.length})`,
+                            value: `\`${res.players.join(', ')}\``
+                        });
+                    })
+                    .catch(() => {
+                        embed.addFields({
+                            name: "Creative Server",
+                            value: "Error loading players"
+                        });
+                    });
+
+                if (players === 0) {
+                    embed.setDescription("There are no players online.")
+                } else {
+                    embed.setDescription(`There is ${players} / ${max} players online.`);
                 }
-                embed.setDescription(`There is ${res.onlinePlayers} / ${res.maxPlayers} players online.`);
             })
-            .catch(() => {
-                embed.setDescription("There was an error loading player count.")
-            });
 
-        if (players === 0) return;
-
-        // Lobby Query
-        await util.queryFull('hyfae.org', {
-                port: 25567,
-            })
-            .then((res) => {
-                if (res.onlinePlayers === 0) return;
-                embed.addFields({
-                    name: `Lobby (${res.players.length})`,
-                    value: `\`${res.players.join(', ')}\``
-                });
-            })
-            .catch(() => {
-                embed.addFields({
-                    name: "Lobby",
-                    value: "There was an error loading players."
-                });
-            });
-
-        // Survival Query    
-        await util.queryFull('hyfae.org', {
-                port: 25568,
-            })
-            .then((res) => {
-                if (res.onlinePlayers === 0) return;
-                embed.addFields({
-                    name: `Survival Server (${res.players.length})`,
-                    value: `\`${res.players.join(', ')}\``
-                });
-            })
-            .catch(() => {
-                embed.addFields({
-                    name: "Survival Server",
-                    value: "There was an error loading players."
-                });
-            });
-
-        // Creative Query    
-        await util.queryFull('hyfae.org', {
-                port: 25566,
-            })
-            .then((res) => {
-                if (res.onlinePlayers === 0) return;
-                embed.addFields({
-                    name: `Creative Server (${res.players.length})`,
-                    value: `\`${res.players.join(', ')}\``
-                });
-            })
-            .catch(() => {
-                embed.addFields({
-                    name: "Creative Server",
-                    value: "There was an error loading players."
-                });
-            });
         return message.channel.send(embed)
     }
 }
