@@ -4,6 +4,7 @@ module.exports = {
     name: 'unban',
     description: 'Unban a user from the server',
     staff: true,
+    usage: 'user id',
     async execute(message, args) {
 
         if (!message.member.hasPermission('BAN_MEMBERS')) return;

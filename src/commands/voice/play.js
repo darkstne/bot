@@ -29,7 +29,7 @@ module.exports = {
                         filter: 'audioonly'
                     });
                     const dispatcher = connection.play(stream)
-                    await dispatcher.on('finish', () => voiceChannel.leave());
+                    await dispatcher.on('finish', () => channel.leave());
                 } catch (error) {
                     return message.channel.send("That video was not found.");
                 }

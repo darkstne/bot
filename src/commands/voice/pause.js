@@ -5,7 +5,8 @@ module.exports = {
     name: 'pause',
     description: 'Pause a song',
     args: true,
-    voice: true,
+    hide: true,
+    // voice: true,
     execute(message, args) {
         const channel = message.member.voice.channel;
         const song = args.slice(0).join(' ');
