@@ -11,4 +11,4 @@ For any urgent issues with the bot, please DM me on Discord @ **XenVoltz#5879**.
 <!-- | [Forum](https://forum.totalfreedom.me/)  | [YouTube](https://www.youtube.com/channel/UCmfrM8awKM0SEl2v5XlTBhA) -->
 
 Come Join The Fun! <br>
-**Server IP**: https://github.com/darkstne/darkstnebot.git
+**Server IP**: darkst.one
