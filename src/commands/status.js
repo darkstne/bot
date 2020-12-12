@@ -11,7 +11,7 @@ module.exports = {
             .setColor('#00385C')
 
         // Lobby Status
-        await util.status('hyfae.org', {
+        await util.status('darkst.one', {
                 port: 25567
             })
             .then(() => {
@@ -28,7 +28,7 @@ module.exports = {
             });
 
         // Survival Status
-        await util.status('hyfae.org', {
+        await util.status('darkst.one', {
                 port: 25568
             })
             .then(() => {
@@ -45,7 +45,7 @@ module.exports = {
             });
 
         // Creative Status
-        await util.status('hyfae.org', {
+        await util.status('darkst.one', {
                 port: 25566
             })
             .then(() => {

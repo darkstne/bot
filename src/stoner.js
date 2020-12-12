@@ -34,7 +34,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log("Bot Online!");
-    client.user.setActivity(`on hyfae.org`, {
+    client.user.setActivity(`on darkst.one`, {
         type: "PLAYING"
     });
 });

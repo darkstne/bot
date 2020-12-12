@@ -7,7 +7,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setColor('#00385C')
             .setTitle("Server IP")
-            .setDescription("hyfae.org")
+            .setDescription("darkst.one")
         return message.channel.send(embed);
     }
 }

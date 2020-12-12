@@ -8,11 +8,11 @@ module.exports = {
     async execute(message) {
         let embed = new Discord.MessageEmbed()
             .setColor('#00385C')
-            .setTitle("Hyfae Player List")
+            .setTitle("Darkstone Player List")
 
         let players;
         // Bungee Query
-        await util.queryFull('hyfae.org', {
+        await util.queryFull('darkst.one', {
                 port: 25565,
             })
             .then(async (res) => {
@@ -20,7 +20,7 @@ module.exports = {
                 let max = res.maxPlayers;
 
                 // Lobby Query
-                await util.queryFull('hyfae.org', {
+                await util.queryFull('darkst.one', {
                         port: 25567,
                     })
                     .then((res) => {
@@ -39,12 +39,12 @@ module.exports = {
                     });
 
                 // Survival Query    
-                await util.queryFull('hyfae.org', {
+                await util.queryFull('darkst.one', {
                         port: 25568,
                     })
                     .then((res) => {
                         if (res.onlinePlayers === 0) return players = res.onlinePlayers;
-                        players = res.onlinePlayers;
+                        players = res.onlinePlayers + players;
                         embed.addFields({
                             name: `Survival Server (${res.players.length})`,
                             value: `\`${res.players.join(', ')}\``
@@ -58,12 +58,12 @@ module.exports = {
                     });
 
                 // Creative Query    
-                await util.queryFull('hyfae.org', {
+                await util.queryFull('darkst.one', {
                         port: 25566,
                     })
                     .then((res) => {
                         if (res.onlinePlayers === 0) return players = res.onlinePlayers;
-                        players = res.onlinePlayers;
+                        players = res.onlinePlayers + players;
                         embed.addFields({
                             name: `Creative Server (${res.players.length})`,
                             value: `\`${res.players.join(', ')}\``
@@ -81,7 +81,7 @@ module.exports = {
                 } else {
                     embed.setDescription(`There is ${players} / ${max} players online.`);
                 }
-            })
+            });
 
         return message.channel.send(embed)
     }

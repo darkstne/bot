@@ -40,14 +40,14 @@ module.exports = {
                     voiceCommands.push(`\`${allCommands[i]}\` - ${allDescriptions[i]}`);
                 }
             }
-            const notes = [`- You can do \`${prefix}help [command name]\` to get more information on a command.`, "- If you notice any issues or would like something added, please visit the [GitHub](https://github.com/hyfae/hyfaebot)."];
+            const notes = [`- You can do \`${prefix}help [command name]\` to get more information on a command.`, "- If you notice any issues or would like something added, please visit the [GitHub](https://github.com/darkstne/darkstnebot)."];
 
             for (var i = 0; i < notes.length; i++) {
                 notes.join('\n')
             }
             const embed = new Discord.MessageEmbed()
                 .setColor('#00385C')
-                .setTitle('Hyfae Bot Help Menu')
+                .setTitle('Darkstone Bot Help Menu')
                 .addFields({
                     name: "Prefix",
                     value: `\`${prefix}\``
