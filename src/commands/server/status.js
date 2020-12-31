@@ -5,14 +5,16 @@ const util = require('minecraft-server-util')
 module.exports = {
     name: 'status',
     description: 'Get the status of the server',
+    hide: true,
     aliases: ['state'],
     async execute(message) {
         const embed = new Discord.MessageEmbed()
             .setColor('#00385C')
 
         // Lobby Status
-        await util.status('darkst.one', {
-                port: 25567
+        await util.ping('darkst.one', {
+                port: 25566,
+                timeout: 2000,
             })
             .then(() => {
                 embed.addFields({
@@ -28,8 +30,9 @@ module.exports = {
             });
 
         // Survival Status
-        await util.status('darkst.one', {
-                port: 25568
+        await util.ping('darkst.one', {
+                port: 25568,
+                timeout: 2000,
             })
             .then(() => {
                 embed.addFields({
@@ -45,8 +48,9 @@ module.exports = {
             });
 
         // Creative Status
-        await util.status('darkst.one', {
-                port: 25566
+        await util.ping('darkst.one', {
+                port: 25567,
+                timeout: 2000,
             })
             .then(() => {
                 embed.addFields({
