@@ -1,0 +1,70 @@
+const nodeactyl = require('nodeactyl-v1-support')
+const node = nodeactyl.Client
+const config = require(__dirname + '/../../../config.json')
+
+module.exports = {
+    name: 'stop',
+    description: 'Stop a server',
+    staff: true,
+    usage: '<creative/survival/lobby>',
+    async execute(message, args) {
+        const roles = ['Executive', 'Developer', 'Admin'];
+        // const roles = ['Test']
+
+        // for (var i = 0; i < roles.length; i++) {
+        //     if (!message.member.roles.cache.some(role => role.name === roles[i])) {
+        //         return console.log("Testing");
+        //     } else {
+        //         return console.log("Testing 2");
+        //     }
+
+        // }
+        // return;
+
+        let args1 = args.splice(0).join().toLowerCase();
+        const server = ['creative', 'survival', 'lobby']
+
+        if (!server.includes(args1)) return message.channel.send("Please input a valid server.")
+
+
+        let serverID;
+        if (args1 === 'creative') {
+            serverID = '98d98424'
+        } else if (args1 === 'survival') {
+            serverID = 'a584f37b'
+        } else if (args1 === 'lobby') {
+            serverID = 'cca9f577'
+        }
+
+        for (var i = 0; i < roles.length; i++) {
+            if (!message.member.roles.cache.some(role => role.name === roles[i])) {
+                continue;
+            } else {
+                node.login('https://panel.darkst.one/', config.APIKey, (logged_in, msg) => {
+                    console.log(logged_in); // return a Boolean (true/false) if logged in.
+                    node.getAllServers()
+                })
+
+                await node.sendCommand(serverID, 'save-all')
+                    .then(() => {
+                        console.log("Server saved...shutting down server.")
+                    })
+                    .catch(err => {
+                        console.log("Something went wrong whilst saving.");
+                        console.log(err);
+                    })
+
+                return node.stopServer(serverID)
+                    .then((res) => {
+                        message.channel.send(`${args1.toUpperCase()} has stopped successfully.`);
+                    })
+                    .catch(err => {
+                        message.channel.send("There was an error attempting to stop the server. (Try \`d!kill\`)");
+                        console.log(err)
+                    })
+            }
+        }
+        message.channel.send("You do not have permission to do that!");
+
+    }
+}

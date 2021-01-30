@@ -3,6 +3,7 @@ const config = require('../../../config.json');
 module.exports = {
     name: 'ban',
     description: 'Ban a user from the server',
+    usage: '<user> [reason]',
     staff: true,
     async execute(message, args) {
 

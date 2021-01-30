@@ -12,7 +12,7 @@ module.exports = {
             .setColor('#00385C')
 
         // Lobby Status
-        await util.ping('darkst.one', {
+        await util.status('51.81.34.106', {
                 port: 25566,
                 timeout: 2000,
             })
@@ -29,8 +29,26 @@ module.exports = {
                 });
             });
 
+                    // Creative Status
+        await util.status('51.81.34.106', {
+            port: 25567,
+            timeout: 500,
+        })
+        .then(() => {
+            embed.addFields({
+                name: "Creative Server",
+                value: "Online"
+            });
+        })
+        .catch(() => {
+            embed.addFields({
+                name: "Creative Server",
+                value: "Offline"
+            });
+        });
+
         // Survival Status
-        await util.ping('darkst.one', {
+        await util.status('51.81.34.106', {
                 port: 25568,
                 timeout: 2000,
             })
@@ -47,23 +65,8 @@ module.exports = {
                 });
             });
 
-        // Creative Status
-        await util.ping('darkst.one', {
-                port: 25567,
-                timeout: 2000,
-            })
-            .then(() => {
-                embed.addFields({
-                    name: "Creative Server",
-                    value: "Online"
-                });
-            })
-            .catch(() => {
-                embed.addFields({
-                    name: "Creative Server",
-                    value: "Offline"
-                });
-            });
+
+
         return message.channel.send(embed)
     }
 }

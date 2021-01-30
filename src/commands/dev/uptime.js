@@ -1,6 +1,7 @@
 module.exports = {
     name: 'uptime',
     description: 'Get uptime of bot',
+    hide: true,
     execute(message) {
         function msConversion(millis) {
             let sec = Math.floor(millis / 1000);

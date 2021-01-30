@@ -3,6 +3,7 @@ const config = require('../../../config.json');
 module.exports = {
     name: 'kick',
     description: 'Kick a user from the server',
+    usage: '<user> [reason]',
     staff: true,
     async execute(message, args) {
 
