@@ -6,3 +6,6 @@ The bot is an application by which the Darkstone server provides online player c
 
 ## Copyright
 This plugin is licensed under the Apache License v2.0. Copyright violations can be reported on the Darkstone forum: https://talk.darkst.one
+
+## Beyond
+This document was last updated on February 16th, 2021.
